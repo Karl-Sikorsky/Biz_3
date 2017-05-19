@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(enterpriseList, new CustomItemClickListener() {
+        RVAdapter adapter = new RVAdapter(getApplicationContext(), enterpriseList, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
 

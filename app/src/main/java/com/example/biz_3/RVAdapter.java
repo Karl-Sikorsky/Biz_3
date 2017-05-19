@@ -4,6 +4,8 @@ package com.example.biz_3;
  * Created by ПОДАРУНКОВИЙ on 16.05.2017.
  */
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,9 +16,12 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import static android.support.v4.content.ContextCompat.startActivity;
+
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EnterpriseViewHolder> {
-
+    String CUSTOM_ACTION = "com.example.biz_3.YOUR_ACTION";
+    Context context;
     public static class EnterpriseViewHolder extends RecyclerView.ViewHolder {
 
         CardView cv;
@@ -43,11 +48,21 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.EnterpriseViewHold
         @Override
         public void onItemClick(View v, int position) {
             Toast.makeText(v.getContext(), "item "+String.valueOf(position), Toast.LENGTH_SHORT).show();
+           // chooseActivity();
         }
     };
 
-    RVAdapter(List<Enterprise> enterprises, CustomItemClickListener listener){
+    private void chooseActivity() {
+        Intent i = new Intent();
+        i.setAction(CUSTOM_ACTION);
+
+      startActivity(this.context,i,null);
+    }
+
+    RVAdapter(Context applicationContext, List<Enterprise> enterprises, CustomItemClickListener listener){
         this.enterprises = enterprises;
+        this.context = applicationContext;
+        this.listener = listener;
     }
 
     @Override

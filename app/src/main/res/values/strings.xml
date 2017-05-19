@@ -9,5 +9,15 @@
     <string name="action_search"> </string>
     <string name="of_branches">По отраслях</string>
     <string name="of_regions">По регионам</string>
+    <string name="products">Товары</string>
+    <string name="products_list">Все товары</string>
+    <string name="info">Информация</string>
+    <string name="head">Руководитель</string>
+    <string name="adres">Адресс</string>
+    <string name="product_name">Название продукта</string>
+    <string name="product_price">Цена продукта</string>
+
+
+
 
 </resources>
