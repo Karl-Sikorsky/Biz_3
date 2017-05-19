@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">       _</string>
+    <string name="description">Описание товаров</string>
+    <string name="telephon">Телефон</string>
+    <string name="category">Категория</string>
+    <string name="city">Город</string>
+
+    <string name="enterprise_name">Имя предприятия</string>
+    <string name="action_search"> </string>
+    <string name="of_branches">По отраслях</string>
+    <string name="of_regions">По регионам</string>
+
+</resources>
