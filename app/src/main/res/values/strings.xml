@@ -16,6 +16,15 @@
     <string name="adres">Адресс</string>
     <string name="product_name">Название продукта</string>
     <string name="product_price">Цена продукта</string>
+    <string name="buy">Заказать</string>
+    <string name="price">Цена</string>
+    <string name="description_big">Большое описание товара, состоящее из множества строк. вставлено сбда чтобы продемонстрировать возможность прокрутки Большое описание товара, состоящее из множества строк. вставлено сбда чтобы продемонстрировать возможность прокрутки Большое описание товара, состоящее из множества строк. вставлено сбда чтобы продемонстрировать возможность прокрутки Большое описание товара, состоящее из множества строк. вставлено сбда чтобы продемонстрировать возможность прокрутки</string>
+    <string name="your_name">Ваше имя*</string>
+    <string name="your_company">Ваше предприятие</string>
+    <string name="your_telephon">Ваш телефон*</string>
+    <string name="your_mail">Ваша почта</string>
+    <string name="your_comment">Ваш комментарий</string>
+    <string name="order">Отправить</string>
 
 
 

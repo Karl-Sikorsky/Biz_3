@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,6 +21,10 @@ import static com.example.biz_3.R.id.rv;
 public class InfoActivity extends AppCompatActivity {
     private List<Product> productList;
     private RecyclerView rv;
+    Button buttonAll;
+    FragmentInfoProduct fragmentProduct;
+    OrderFragment fragmentOrder;
+    FragmentAllProducts fragmentAll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +34,9 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
       getSupportActionBar().hide();
 
-
+        fragmentProduct = new FragmentInfoProduct();
+        fragmentOrder = new OrderFragment();
+        fragmentAll = new FragmentAllProducts();
         rv=(RecyclerView)findViewById(R.id.recycle_products);
 
         LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
@@ -38,6 +45,14 @@ public class InfoActivity extends AppCompatActivity {
 
         initializeData();
         initializeAdapter();
+
+        buttonAll = (Button)findViewById(R.id.buttonAll);
+        buttonAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentAll.show(getFragmentManager(),"Все продукты");
+            }
+        });
     }
 
     private void initializeAdapter(){
@@ -46,7 +61,7 @@ public class InfoActivity extends AppCompatActivity {
             public void onItemClick(View v, int position) {
 
                 Toast.makeText(getApplicationContext(), "item "+String.valueOf(position), Toast.LENGTH_SHORT).show();
-
+                fragmentProduct.show(getFragmentManager(), "Имя продукта");
 
             }
         });

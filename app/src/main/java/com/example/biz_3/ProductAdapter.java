@@ -55,6 +55,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     ProductAdapter(List<Product> products, CustomItemClickListener listener){
         this.products = products;
+        this.listener = listener;
     }
 
     @Override
