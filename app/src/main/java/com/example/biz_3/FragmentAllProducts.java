@@ -1,5 +1,6 @@
 package com.example.biz_3;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,27 @@ import java.util.List;
  */
 
 public class FragmentAllProducts extends DialogFragment implements View.OnClickListener {
+    public FragmentAllProducts() {
+    }
+
+    public static interface ListInterface {
+        public void onChooseList(int tag);
+    }
+
+    private ListInterface mListener;
+
+    @Override
+    public void onAttach(Activity activity) {
+        mListener = (ListInterface) activity;
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onDetach() {
+        mListener = null;
+        super.onDetach();
+    }
+
 private RecyclerView all_rv;
     List<Product> productList;
     private ProductAdapter all_adapter;
@@ -43,8 +65,8 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
             public void onItemClick(View v, int position) {
 
                 Toast.makeText(getActivity().getApplication().getApplicationContext(), "item "+String.valueOf(position), Toast.LENGTH_SHORT).show();
-
-
+                mListener.onChooseList(position);
+                getDialog().dismiss();
             }
         });
        all_rv.setAdapter(adapter);
@@ -59,6 +81,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
     }
     @Override
 public void onClick(View v) {
+
         Toast.makeText(getActivity().getApplicationContext(),"BUY",Toast.LENGTH_SHORT).show();
 
         }

@@ -39,13 +39,23 @@
             android:textSize="25dp"
         android:paddingLeft="20dp"
             android:textColor="#dd4225"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:layout_gravity="center"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp">
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/buy"
-            android:layout_gravity="center"
+
             android:id="@+id/buttonBuy"
+            android:textColor="#ffffff"
+            android:background="@color/colorOrange"
             />
+    </LinearLayout>
 
 </LinearLayout>
 </ScrollView>

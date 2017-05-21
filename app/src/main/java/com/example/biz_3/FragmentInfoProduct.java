@@ -1,5 +1,6 @@
 package com.example.biz_3;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -14,7 +15,23 @@ import android.widget.Toast;
  */
 
 public class FragmentInfoProduct extends DialogFragment implements View.OnClickListener {
+    public static interface MyInterface {
+        public void onChoose(String tag);
+    }
 
+    private MyInterface mListener;
+
+    @Override
+    public void onAttach(Activity activity) {
+        mListener = (MyInterface) activity;
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onDetach() {
+        mListener = null;
+        super.onDetach();
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,7 +47,8 @@ public class FragmentInfoProduct extends DialogFragment implements View.OnClickL
     @Override
     public void onClick(View v) {
         Toast.makeText(getActivity().getApplicationContext(),"BUY",Toast.LENGTH_SHORT).show();
-
+        mListener.onChoose("info");
+        getDialog().dismiss();
     }
 
     // ...

@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         enterpriseList = new ArrayList<>();
         for(int i=0;i<20;i++){
             
-            enterpriseList.add(new Enterprise("Enterprise "+String.valueOf(i), "description "+String.valueOf(i),"telephon "+String.valueOf(i),"city "+String.valueOf(i),"category "+String.valueOf(i)));
+            enterpriseList.add(new Enterprise("Enterprise ", "description ","telephon ","city ","category "));
            
         }
     }
