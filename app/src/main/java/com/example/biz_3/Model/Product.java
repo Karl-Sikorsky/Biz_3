@@ -1,7 +1,7 @@
-package com.example.biz_3;
+package com.example.biz_3.Model;
 
 /**
- * Created by ПОДАРУНКОВИЙ on 19.05.2017.
+ * Created by Karl on 19.05.2017.
  */
 
 public class Product {
@@ -9,10 +9,17 @@ public class Product {
     private String name;
     private double price;
 
+    public Product(){}
+
     public Product(String image, String name, double price) {
         this.image = image;
         this.name = name;
         this.price = price;
+    }
+    public Product(Product product){
+        this.image = product.getImage();
+        this.name = product.getName();
+        this.price = product.getPrice();
     }
 
     public String getImage() {

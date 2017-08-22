@@ -1,16 +1,19 @@
-package com.example.biz_3;
+package com.example.biz_3.Presenter;
 
 /**
- * Created by ПОДАРУНКОВИЙ on 16.05.2017.
+ * Created by Karl on 16.05.2017.
  */
 
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.biz_3.Model.Category;
+import com.example.biz_3.Model.CustomItemClickListener;
+import com.example.biz_3.R;
 
 import java.util.List;
 
@@ -42,7 +45,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
     };
 
-    CategoryAdapter(List<Category> categories, CustomItemClickListener listener){
+    public CategoryAdapter(List<Category> categories, CustomItemClickListener listener){
         this.categories = categories;
     }
 

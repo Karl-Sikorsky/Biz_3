@@ -1,7 +1,7 @@
-package com.example.biz_3;
+package com.example.biz_3.Model;
 
 /**
- * Created by ПОДАРУНКОВИЙ on 16.05.2017.
+ * Created by Karl on 16.05.2017.
  */
 
 public class Category {

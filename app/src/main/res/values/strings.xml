@@ -26,8 +26,7 @@
     <string name="your_comment">Ваш комментарий</string>
     <string name="order">Отправить</string>
     <string name="contacts">Контакты</string>
-
-
+    <string name="ent_name">Имя предприятия</string>
 
 
 </resources>

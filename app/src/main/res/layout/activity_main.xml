@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.biz_3.MainActivity">
+    tools:context="com.example.biz_3.View.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layoutAnimation="@anim/layout_fall_down_anim"
         android:id="@+id/rv"
         >
 

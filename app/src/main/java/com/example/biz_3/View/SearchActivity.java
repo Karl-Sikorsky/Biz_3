@@ -1,4 +1,4 @@
-package com.example.biz_3;
+package com.example.biz_3.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.biz_3.Model.Category;
+import com.example.biz_3.Model.CustomItemClickListener;
+import com.example.biz_3.Presenter.CategoryAdapter;
+import com.example.biz_3.R;
 
 import java.util.ArrayList;
 import java.util.List;

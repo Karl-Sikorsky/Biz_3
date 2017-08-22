@@ -1,8 +1,6 @@
-package com.example.biz_3;
+package com.example.biz_3.View;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,15 +10,27 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.biz_3.Model.CustomItemClickListener;
+import com.example.biz_3.Model.Product;
+import com.example.biz_3.Model.retrofit_package.ApiUtils;
+import com.example.biz_3.Model.retrofit_package.BizGidApi;
+import com.example.biz_3.Model.retrofit_package.CompanyObject;
+import com.example.biz_3.Presenter.AllPresenter;
+import com.example.biz_3.Presenter.InfoPresenter;
+import com.example.biz_3.Presenter.ProductAdapter;
+import com.example.biz_3.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.biz_3.R.id.recycle_products;
-import static com.example.biz_3.R.id.rv;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class InfoActivity extends AppCompatActivity implements FragmentInfoProduct.MyInterface, FragmentAllProducts.ListInterface {
+public class InfoActivity extends AppCompatActivity implements FragmentInfoProduct.MyInterface, FragmentAllProducts.ListInterface, AllView {
     private List<Product> productList;
     private RecyclerView rv;
     private final int ALL_FRAGMENT = 456, FRAGMENT_PRODUCT = 228;
@@ -28,6 +38,14 @@ public class InfoActivity extends AppCompatActivity implements FragmentInfoProdu
     FragmentInfoProduct fragmentProduct;
     OrderFragment fragmentOrder;
     FragmentAllProducts fragmentAll;
+    String enterpriseName;
+    TextView ent_name;
+    String slug;
+    int currentProduct;
+
+
+    private AllPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +54,14 @@ public class InfoActivity extends AppCompatActivity implements FragmentInfoProdu
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_info);
       getSupportActionBar().hide();
+
+        Intent intent = getIntent();
+        enterpriseName = intent.getStringExtra("enterprise");
+        slug = intent.getStringExtra("slug");
+        ent_name = (TextView)findViewById(R.id.textView2);
+        ent_name.setText(enterpriseName);
+        productList = new ArrayList<Product>();
+        presenter = new InfoPresenter(this,getApplicationContext());
 
         fragmentProduct = new FragmentInfoProduct();
         fragmentOrder = new OrderFragment();
@@ -46,8 +72,10 @@ public class InfoActivity extends AppCompatActivity implements FragmentInfoProdu
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        initializeData();
-        initializeAdapter();
+
+
+        productList = presenter.initDataProducts();
+
 
         buttonAll = (Button)findViewById(R.id.buttonAll);
         buttonAll.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +89,7 @@ public class InfoActivity extends AppCompatActivity implements FragmentInfoProdu
 
 
 
-    private void initializeAdapter(){
+    public void initializeAdapter(){
         ProductAdapter adapter = new ProductAdapter(productList, new CustomItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
@@ -75,12 +103,7 @@ public class InfoActivity extends AppCompatActivity implements FragmentInfoProdu
         rv.setAdapter(adapter);
     }
     private void initializeData() {
-        productList = new ArrayList<>();
-        for(int i=0;i<20;i++){
 
-            productList.add(new Product("url "+String.valueOf(i), "ProductName "+String.valueOf(i), i));
-
-        }
     }
 
     @Override
@@ -94,10 +117,18 @@ public class InfoActivity extends AppCompatActivity implements FragmentInfoProdu
 
     @Override
     public void onChooseList(int tag) {
+        currentProduct = tag;
         Toast.makeText(getApplicationContext(),"GET ON CHOOSELIST", Toast.LENGTH_SHORT).show();
         fragmentProduct.setTargetFragment(fragmentProduct, FRAGMENT_PRODUCT);
         fragmentProduct.show(getFragmentManager(), "Продукт номер "+tag);
 
+
+    }
+    public List<Product> getProductList(){
+        return productList;
+    }
+    public int getCurrentProduct(){
+        return currentProduct;
     }
 
 }
