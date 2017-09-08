@@ -85,6 +85,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
         InfoActivity activity = (InfoActivity) getActivity();
         Log.d("fragmentAll","sucsess to get activity");
         Log.d("fragmentAll","size: "+String.valueOf(activity.getProductList().size()));
+        productList.add(new Product("no image", "test", 0));
         for(int i=0;i<activity.getProductList().size();i++){
 
             productList.add(new Product(activity.getProductList().get(i).getImage(),activity.getProductList().get(i).getName(),0));
